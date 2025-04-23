@@ -1,0 +1,28 @@
+<%- include("partials/head") %>
+
+<div class="main-content">
+  <div class="landing-content">
+    <img src="/Socketumi.png" alt="Socketumi IM Logo" class="landing-logo" />
+    <p>Please log in or create a new account.</p>
+    <p id="user-count"></p>
+
+    <script>
+      fetch("/online-count")
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById(
+            "user-count"
+          ).textContent = `Users online: ${data.count}`;
+        });
+    </script>
+
+    <div class="button-container">
+      <img src="/shuriken.png" alt="shuriken" class="shuriken spin-left" />
+      <a class="btn btn-primary" href="/login">Login</a>
+      <a class="btn btn-secondary" href="/signup">Sign Up</a>
+      <img src="/shuriken.png" alt="shuriken" class="shuriken spin-right" />
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

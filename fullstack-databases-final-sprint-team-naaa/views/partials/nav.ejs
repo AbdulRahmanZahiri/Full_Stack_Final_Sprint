@@ -1,0 +1,22 @@
+<nav>
+  <ul class="nav-links">
+    <li><img src="/SLogo.png" alt="Socketumi IM Logo" class="nav-logo" /></li>
+    <li>
+      <a href="/dashboard" class="nav-link">Chat</a>
+    </li>
+    <li><a href="/profile" class="nav-link">Profile</a></li>
+
+    <% if (currentUser && currentUser.isAdmin) { %>
+    <li><a href="/admin" class="nav-link">Admin Dashboard</a></li>
+    <% } %> <% if (currentUser) { %>
+    <li>
+      <form action="/logout" method="post" class="logout-form">
+        <button class="btn btn-secondary" type="submit">Logout</button>
+      </form>
+    </li>
+    <% } else { %>
+    <li><a href="/login" class="nav-link">Login</a></li>
+    <li><a href="/signup" class="nav-link">Sign Up</a></li>
+    <% } %>
+  </ul>
+</nav>

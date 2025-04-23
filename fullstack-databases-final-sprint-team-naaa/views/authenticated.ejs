@@ -1,0 +1,43 @@
+<%- include("partials/head") %> <%- include("partials/nav") %>
+<div class="chat-body">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Chat Room</h2>
+      <div class="user-count"><span id="userCount">0</span> Users Online</div>
+    </div>
+    <div class="chat-messages" id="messages">
+      <div class="message">
+        <div class="message-title">
+          <h3 class="message-sender">Socketumi Team</h3>
+          <p class="message-time">Long long ago...</p>
+        </div>
+        <p class="message-text">
+          Welcome to Socketumi IM! Enjoy talking to yourself :)
+        </p>
+        <p class="message-text">
+          Click a user in the list to the right to see their profile!
+        </p>
+      </div>
+    </div>
+    <form id="messageForm" class="message-form">
+      <input
+        type="text"
+        id="messageInput"
+        name="message"
+        placeholder="Type your message..."
+        required
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <div class="users-container">
+    <h2>Users</h2>
+    <ul id="userList"></ul>
+  </div>
+</div>
+<script>
+  window.CURRENT_USERNAME = "<%= currentUser.username %>";
+</script>
+<script src="/frontend.js"></script>
+
+<%- include("partials/footer") %>

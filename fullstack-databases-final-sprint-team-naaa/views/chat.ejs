@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<div class="chat-body">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Chat Room</h2>
+      <div class="user-count">
+        <span id="userCount">0</span> Users Online
+      </div>
+    </div>
+    <div class="chat-messages" id="messages">
+      <div class="message">
+        <div class="message-title">
+          <h3 class="message-sender">Alex</h3>
+          <p class="message-time">2025-03-01, 5:30pm</p>
+        </div>
+        <p class="message-text">Hello, how are you?</p>
+      </div>
+    </div>
+    <form id="messageForm" class="message-form">
+      <input type="text" id="messageInput" placeholder="Type your message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <div class="users-container">
+    <h2>Users</h2>
+    <ul id="userList">
+      <!-- User list will be populated here -->
+      <li class="user-item">
+        <a href="/profile/1" class="user-link">
+          <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=${username}" alt="${username}" class="user-avatar">
+          <span class="user-name">Alex</span>
+        </a>
+        <div class="user-status">Online</div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  // temporary function to simulate multiple user messages
+  function simulateUserMessages() {
+    const messagesContainer = document.getElementById('messages');
+    const userCountElement = document.getElementById('userCount');
+    let userCount = 0;
+
+    // Simulate a new user joining
+    function addUser() {
+      userCount++;
+      userCountElement.textContent = userCount;
+    }
+
+    // Simulate a message being sent
+    function addMessage(sender, text) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+
+      const titleDiv = document.createElement('div');
+      titleDiv.classList.add('message-title');
+
+      const senderElement = document.createElement('h3');
+      senderElement.classList.add('message-sender');
+      senderElement.textContent = sender;
+
+      const timeElement = document.createElement('p');
+      timeElement.classList.add('message-time');
+      timeElement.textContent = new Date().toLocaleString();
+
+      titleDiv.appendChild(senderElement);
+      titleDiv.appendChild(timeElement);
+
+      const textElement = document.createElement('p');
+      textElement.classList.add('message-text');
+      textElement.textContent = text;
+
+      messageDiv.appendChild(titleDiv);
+      messageDiv.appendChild(textElement);
+
+      messagesContainer.appendChild(messageDiv);
+    }
+
+    // Simulate adding users and messages
+    setInterval(() => {
+      addUser();
+      addMessage(`User${userCount}`, `Hello from User${userCount}!`);
+    }, 2000);
+  }
+  // Call the function to start simulating messages
+  simulateUserMessages();
+
+  // script to display temporary users in the user list
+  const userList = document.getElementById('userList');
+
+</script>
+
+</html>
